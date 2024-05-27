@@ -1,23 +1,27 @@
+import os
+
 print('''
 █▀ ▄▀█ █▄▄ █▀█ █▀█   █▀▀ ▀▄▀ █▀█ █▀█ █▀▀ █▀ █▀
 ▄█ █▀█ █▄█ █▄█ █▀▄   ██▄ █░█ █▀▀ █▀▄ ██▄ ▄█ ▄█
 ''')
 
-print('1. Cadastrar restaurante')
-print('2. Listar restaurantes')
-print('3. Ativar restaurante')
-print('4. Sair\n')
+print('1. Registrate restaurant')
+print('2. List restaurant')
+print('3. Activate restaurant')
+print('4. Exit\n')
 
-chosen_option = int(input('Escolha uma opção: '))
+chosen_option = int(input('Choose an option: '))
 # chosen_option = int(chosen_option)
 
-print(f'Você escolheu a opção {chosen_option}')
+def finalize_app():
+    os.system('cls')
+    print('Shutting app\n')
 
 if chosen_option == 1:
-    print('Cadastrar restaurante')
+    print('Registrate restaurant')
 elif chosen_option == 2:
-    print('Listar restaurante')
+    print('List restaurant')
 elif chosen_option == 3:
-    print('Ativar restaurante')
+    print('Activate restaurant')
 else:
-    print('Encerrando o programa')
+    finalize_app()
