@@ -8,7 +8,8 @@ print('2. Listar restaurantes')
 print('3. Ativar restaurante')
 print('4. Sair\n')
 
-chosen_option = input('Escolha uma opção: ')
+chosen_option = int(input('Escolha uma opção: '))
+# chosen_option = int(chosen_option)
 
 print(f'Você escolheu a opção {chosen_option}')
 
