@@ -1,5 +1,7 @@
 import os
 
+restaurants = ['Pizza', 'Sushi']
+
 def show_app_name():
     print('''
 █▀ ▄▀█ █▄▄ █▀█ █▀█   █▀▀ ▀▄▀ █▀█ █▀█ █▀▀ █▀ █▀
@@ -21,15 +23,33 @@ def invalid_option():
      input('Press enter key to go back to main menu')
      main()
 
+def registrate_new_restaurant():
+     os.system('cls')
+     print('New restaurant registration\n')
+     restaurant_name = input('Type desired restaurant name to registrate: ')
+     restaurants.append(restaurant_name)
+     print(f'{restaurant_name} registrated successfully!')
+     input('\nType a key to go back to main menu')
+     main()
+     
+def list_restaurants():
+     os.system('cls')
+     print('List all restaurants\n')
+
+     for restaurant in restaurants:
+          print(f'.{restaurant}')
+
+     input('\nType a key to go back to main menu')
+     main()
 
 def choose_option():
     try:
         chosen_option = int(input('Choose an option: '))
 
         if chosen_option == 1:
-            print('Registrate restaurant')
+            registrate_new_restaurant()
         elif chosen_option == 2:
-            print('List restaurant')
+            list_restaurants()
         elif chosen_option == 3:
             print('Activate restaurant')
         elif chosen_option == 4:
