@@ -15,32 +15,34 @@ def show_options():
     print('4. Exit\n')
 
 def finalize_app():
-    os.system('cls')
-    print('Shutting app\n')
+    show_subtitle('Shutting app\n')
+
+def back_to_main_menu():
+     input('\nPress enter key to go back to main menu ')
+     main()
 
 def invalid_option():
      print('Invalid option! \n')
-     input('Press enter key to go back to main menu')
-     main()
+     back_to_main_menu()
+
+def show_subtitle(text):
+    os.system('cls')
+    print(text)
 
 def registrate_new_restaurant():
-     os.system('cls')
-     print('New restaurant registration\n')
+     show_subtitle('New restaurant registration\n')
      restaurant_name = input('Type desired restaurant name to registrate: ')
      restaurants.append(restaurant_name)
-     print(f'{restaurant_name} registrated successfully!')
-     input('\nType a key to go back to main menu')
-     main()
+     print(f'\n{restaurant_name} registrated successfully!')
+     back_to_main_menu()
      
 def list_restaurants():
-     os.system('cls')
-     print('List all restaurants\n')
+     show_subtitle('List all restaurants\n')
 
      for restaurant in restaurants:
           print(f'.{restaurant}')
 
-     input('\nType a key to go back to main menu')
-     main()
+     back_to_main_menu()
 
 def choose_option():
     try:
