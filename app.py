@@ -13,14 +13,14 @@ def show_app_name():
 def show_options():
     print('1. Registrate restaurant')
     print('2. List restaurant')
-    print('3. Activate restaurant')
+    print('3. Change restaurant status')
     print('4. Exit\n')
 
 def finalize_app():
     show_subtitle('Shutting app\n')
 
 def back_to_main_menu():
-    input('\nPress enter key to go back to main menu ')
+    input('Press enter key to go back to main menu ')
     main()
 
 def invalid_option():
@@ -29,7 +29,11 @@ def invalid_option():
 
 def show_subtitle(text):
     os.system('cls')
+    line = '*' * (len(text))
+    print(line) 
     print(text)
+    print(line) 
+    print()
 
 def registrate_new_restaurant():
     show_subtitle('New restaurant registration\n')
@@ -44,11 +48,12 @@ def registrate_new_restaurant():
 def list_restaurants():
     show_subtitle('List all restaurants\n')
 
+    print(f'{'Restaurant name'.ljust(22)} | {'Category'.ljust(20)} | {'Status'.ljust(20)}')
     for restaurant in restaurants:
         name_restaurant = restaurant['name']
         category = restaurant['category']
-        active = restaurant['active']
-        print(f'- {name_restaurant} | {category} | {active}')
+        active = 'Active' if restaurant['active'] else 'Deactivated'
+        print(f'- {name_restaurant.ljust(20)} | {category.ljust(20)} | {active}')
     back_to_main_menu()
 
 def change_restaurant_status():
