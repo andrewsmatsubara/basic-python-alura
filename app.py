@@ -20,34 +20,50 @@ def finalize_app():
     show_subtitle('Shutting app\n')
 
 def back_to_main_menu():
-     input('\nPress enter key to go back to main menu ')
-     main()
+    input('\nPress enter key to go back to main menu ')
+    main()
 
 def invalid_option():
-     print('Invalid option! \n')
-     back_to_main_menu()
+    print('Invalid option! \n')
+    back_to_main_menu()
 
 def show_subtitle(text):
     os.system('cls')
     print(text)
 
 def registrate_new_restaurant():
-     show_subtitle('New restaurant registration\n')
-     restaurant_name = input('Type desired restaurant name to registrate: ')
-     restaurants.append(restaurant_name)
-     print(f'\n{restaurant_name} registrated successfully!')
-     back_to_main_menu()
+    show_subtitle('New restaurant registration\n')
+    restaurant_name = input('Type desired restaurant name to registrate: ')
+    category = input(f'Type the desired category of {restaurant_name} to registrate: ')
+    restaurant_data = {'name': restaurant_name, 'category': category, 'active': False}
+    restaurants.append(restaurant_data)
+    restaurants.append(restaurant_name)
+    print(f'\n{restaurant_name} registrated successfully!')
+    back_to_main_menu()
      
 def list_restaurants():
-     show_subtitle('List all restaurants\n')
+    show_subtitle('List all restaurants\n')
 
-     for restaurant in restaurants:
-          name_restaurant = restaurant['name']
-          category = restaurant['category']
-          active = restaurant['active']
-          print(f'- {name_restaurant} | {category} | {active}')
+    for restaurant in restaurants:
+        name_restaurant = restaurant['name']
+        category = restaurant['category']
+        active = restaurant['active']
+        print(f'- {name_restaurant} | {category} | {active}')
+    back_to_main_menu()
 
-     back_to_main_menu()
+def change_restaurant_status():
+    show_subtitle('Changing restaurant status\n')
+    restaurant_name = input('Type desired restaurant name to change status: ')
+    found_restaurant = False
+    for restaurant in restaurants:
+        if restaurant_name == restaurant['name']:
+            found_restaurant = True
+            restaurant['active'] = not restaurant['active']
+            message = f'The {restaurant_name} restaurant was activated successfully' if restaurant['active'] else f'The {restaurant_name} restaurant was deactivated successfully'
+            print(message)     
+    if not found_restaurant:
+        print('The restaurant was not found')
+    back_to_main_menu()    
 
 def choose_option():
     try:
@@ -58,19 +74,19 @@ def choose_option():
         elif chosen_option == 2:
             list_restaurants()
         elif chosen_option == 3:
-            print('Activate restaurant')
+            change_restaurant_status()
         elif chosen_option == 4:
             finalize_app()
         else:
             invalid_option()
     except:
-         invalid_option()
+        invalid_option()
 
 def main():
-        os.system('cls')
-        show_app_name()
-        show_options()
-        choose_option()
+    os.system('cls')
+    show_app_name()
+    show_options()
+    choose_option()
 
 if __name__ == '__main__':
-        main()
+    main()
