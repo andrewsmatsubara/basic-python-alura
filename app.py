@@ -36,6 +36,10 @@ def show_subtitle(text):
     print()
 
 def registrate_new_restaurant():
+    '''
+    This method is responsible for registrating a new restaurant
+    '''
+
     show_subtitle('New restaurant registration\n')
     restaurant_name = input('Type desired restaurant name to registrate: ')
     category = input(f'Type the desired category of {restaurant_name} to registrate: ')
