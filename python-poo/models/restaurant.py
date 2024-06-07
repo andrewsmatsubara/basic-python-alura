@@ -7,7 +7,7 @@ class Restaurant:
     self.active = False
     Restaurant.restaurants.append(self)
 
-  def __str__(self) -> str:
+  def __str__(self):
     return f'{self.name} | {self.category}'
   
   def list_restaurants():
