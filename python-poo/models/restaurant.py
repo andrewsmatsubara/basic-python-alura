@@ -15,10 +15,10 @@ class Restaurant:
   
   @classmethod
   def list_restaurants(cls):
-    print (f'{'Restaurant name'.ljust(25)} | {'Category'.ljust(25)}')
+    print (f'{'Restaurant name'.ljust(25)} | {'Category'.ljust(25)} | {'Rating'.ljust(25)} | {'Status'}')
 
     for restaurant in cls.restaurants:
-      print(f'{restaurant._name.ljust(25)} | {restaurant._category.ljust(25)} | {restaurant.active}')
+      print(f'{restaurant._name.ljust(25)} | {restaurant._category.ljust(25)} | {str(restaurant.average_rating).ljust(25)} | {restaurant.active}')
 
   @property
   def active(self):
