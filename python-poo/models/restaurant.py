@@ -1,3 +1,5 @@
+from models.rating import Rating
+
 class Restaurant:
   restaurants = []
 
@@ -5,6 +7,7 @@ class Restaurant:
     self._name = name.title()
     self._category = category.upper()
     self._active = False
+    self._rating = []
     Restaurant.restaurants.append(self)
 
   def __str__(self):
@@ -24,8 +27,17 @@ class Restaurant:
   def set_active(self):
     self._active = not self._active
 
-praca_restaurant = Restaurant('Praça', 'Gourmet')
-praca_restaurant.set_active()
-pizza_restaurant = Restaurant('Pizza Express', 'Italian')
+  def get_rating(self, customer, rating):
+    rating = Rating(customer, rating)
+    self._rating.append(rating)
 
-Restaurant.list_restaurants()
+  @property
+  def average_rating(self):
+    if not self._rating:
+      return 0
+
+    rating_sum = sum(rating._rating for rating in self._rating)
+    rating_quantity = len(self._rating)
+    average_rating = round(rating_sum / rating_quantity, 1)
+
+    return average_rating
