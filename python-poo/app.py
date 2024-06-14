@@ -1,12 +1,14 @@
 from models.restaurant import Restaurant
+from models.restaurant_menu.beverage import Beverage
+from models.restaurant_menu.dish import Dish
 
 praca_restaurant = Restaurant('Praça', 'Gourmet')
-praca_restaurant.get_rating('Andrews', 10)
-praca_restaurant.get_rating('Laura', 8)
-praca_restaurant.get_rating('Luzia', 5)
+juice = Beverage('Watermelon Juice', 5.0, 'Big')
+bread = Dish('Bread', 2.0, 'Best bread in the city')
 
 def main():
-  Restaurant.list_restaurants()
+  print(juice)
+  print(bread)
 
 if __name__ == '__main__':
   main()
