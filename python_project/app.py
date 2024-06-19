@@ -1,6 +1,5 @@
 import requests
 import json
-import os
 
 url = 'https://guilhermeonrails.github.io/api-restaurantes/restaurantes.json'
 response = requests.get(url)
